@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'ip_tracking',
+    'django_ip_geolocation',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'django_ip_geolocation.middleware.IpGeolocationMiddleware',
     'ip_tracking.middleware.RequestLogMiddleware',
 ]
 
