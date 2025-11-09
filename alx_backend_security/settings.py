@@ -128,3 +128,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 RATELIMIT_USE_CACHE = 'default'
+
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'detect-suspicious-activity-hourly': {
+        'task': 'ip_tracking.tasks.detect_suspicious_activity',
+        'schedule': crontab(minute=0, hour='*'),  # every hour
+    },
+}
+
+CELERY_BROKER_URL = "redis://localhost:6379/0"
